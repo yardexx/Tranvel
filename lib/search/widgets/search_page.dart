@@ -13,7 +13,6 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-
   final TextEditingController _startController = TextEditingController();
   final TextEditingController _destinationController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
@@ -80,87 +79,71 @@ class _SearchPageState extends State<SearchPage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Hi, traveler!',
-              style: theme.textTheme.headline4?.copyWith(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+              'Where do you want to go?',
+              style: theme.textTheme.headline5,
+            ),
+            TextField(
+              controller: _startController,
+              decoration: const InputDecoration(
+                icon: Icon(Icons.place_outlined),
+                labelText: 'From',
+                hintText: 'Bratislava',
               ),
+              textInputAction: TextInputAction.next,
             ),
             const SizedBox(
-              height: 16.0,
+              height: 8,
             ),
-            Column(
+            TextField(
+              controller: _destinationController,
+              decoration: const InputDecoration(
+                icon: Icon(Icons.place_outlined),
+                labelText: 'To',
+                hintText: 'Brno',
+              ),
+            ),
+            Row(
               children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Where do you want to go?',
-                    style: theme.textTheme.headline6,
+                Expanded(
+                  child: TextField(
+                    controller: _dateController,
+                    readOnly: true,
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.calendar_today_outlined),
+                      labelText: 'Date',
+                    ),
+                    onTap: () => _selectDate(),
                   ),
-                ),
-                TextField(
-                  controller: _startController,
-                  decoration: const InputDecoration(
-                    icon: Icon(Icons.place_outlined),
-                    labelText: 'From',
-                    hintText: 'Bratislava',
-                  ),
-                  textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(
-                  height: 8,
+                  width: 32.0,
                 ),
-                TextField(
-                  controller: _destinationController,
-                  decoration: const InputDecoration(
-                    icon: Icon(Icons.place_outlined),
-                    labelText: 'To',
-                    hintText: 'Brno',
-                  ),
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: _dateController,
-                        readOnly: true,
-                        decoration: const InputDecoration(
-                          icon: Icon(Icons.calendar_today_outlined),
-                          labelText: 'Date',
-                        ),
-                        onTap: () => _selectDate(),
-                      ),
+                Expanded(
+                  child: TextField(
+                    controller: _timeController,
+                    readOnly: true,
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.schedule_outlined),
+                      labelText: 'Time',
                     ),
-                    const SizedBox(
-                      width: 32.0,
-                    ),
-                    Expanded(
-                      child: TextField(
-                        controller: _timeController,
-                        readOnly: true,
-                        decoration: const InputDecoration(
-                          icon: Icon(Icons.schedule_outlined),
-                          labelText: 'Time',
-                        ),
-                        onTap: () => _selectTime(),
-                      ),
-                    ),
-                  ],
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 16.0),
-                    child: ElevatedButton.icon(
-                      icon: const Icon(Icons.search_outlined),
-                      onPressed: () =>
-                          Navigator.of(context).push(ResultPage.route()),
-                      label: const Text('Search'),
-                    ),
+                    onTap: () => _selectTime(),
                   ),
                 ),
               ],
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: ElevatedButton.icon(
+                  icon: const Icon(Icons.search_outlined),
+                  onPressed: () =>
+                      Navigator.of(context).push(ResultPage.route()),
+                  label: const Text('Search'),
+                ),
+              ),
             ),
             const SizedBox(
               height: 16.0,
