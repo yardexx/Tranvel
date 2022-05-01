@@ -14,7 +14,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.3.1
   intl: any
-  provider: any
+  flutter_bloc: any
+  equatable: ^2.0.3
 
 dev_dependencies:
   flutter_test:
