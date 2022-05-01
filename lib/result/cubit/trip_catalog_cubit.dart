@@ -5,7 +5,7 @@ import 'package:trainvel/result/models/models.dart';
 part 'trip_catalog_state.dart';
 
 class TripCatalogCubit extends Cubit<TripState> {
-  TripCatalogCubit() : super(TripState());
+  TripCatalogCubit() : super(const TripState());
 
   Future<void> fetchCatalog(
       String start, String destination, DateTime date) async {

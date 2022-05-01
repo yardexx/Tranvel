@@ -32,7 +32,6 @@ class _SearchPageState extends State<SearchPage> {
   String get _time => _lastTime.format(context);
 
   void _selectDate() async {
-    print(Intl.getCurrentLocale());
     final DateTime? newDate = await showDatePicker(
         context: context,
         firstDate: DateTime.now(),

@@ -72,7 +72,7 @@ class HomePage extends StatelessWidget {
                         shrinkWrap: true,
                         itemBuilder: (context, _) {
                           return ListTile(
-                            onTap: () => print('ListTile tapped.'),
+                            onTap: () => debugPrint('ListTile tapped.'),
                             title: const Text('Brno - Bratislava'),
                             subtitle: Text(
                               DateFormat('dd.MM.yyyy').format(DateTime.now()),
