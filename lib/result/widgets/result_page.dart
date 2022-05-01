@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trainvel/result/cubit/trip_catalog_cubit.dart';
 import 'package:trainvel/result/result.dart';
 
 class ResultPage extends StatelessWidget {
@@ -10,22 +11,38 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _trips = context.watch<Catalog>().trips;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Train connections'),
         centerTitle: true,
       ),
-      body: ListView.builder(
-        itemCount: _trips.length,
-        itemBuilder: (_, index) {
-          final currentTrip = _trips[index];
-          return Column(
-            children: [
-              Text(currentTrip.start),
-              Text(currentTrip.destination),
-            ],
-          );
+      body: BlocBuilder<TripCatalogCubit, TripState>(
+        builder: (context, state) {
+          switch (state.status) {
+            case TripStatus.initial:
+              return const Center(
+                child: Text('Initial state.'),
+              );
+            case TripStatus.loading:
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            case TripStatus.success:
+              return ListView.separated(
+                padding: const EdgeInsets.all(16.0),
+                itemCount: state.trip.trains.length,
+                itemBuilder: (_, index) {
+                  return TrainCard(
+                    train: state.trip.trains[index],
+                  );
+                },
+                separatorBuilder: (_, __) => const SizedBox(height: 16.0),
+              );
+            case TripStatus.failure:
+              return const Center(
+                child: Text('Failed to fetch.'),
+              );
+          }
         },
       ),
     );

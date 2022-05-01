@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:trainvel/result/cubit/trip_catalog_cubit.dart';
 import 'package:trainvel/result/result.dart';
 
 class SearchPage extends StatefulWidget {
@@ -25,21 +27,25 @@ class _SearchPageState extends State<SearchPage> {
 
   String get _destination => _destinationController.text;
 
-  String get _date => DateFormat('dd.MM.yyyy').format(_lastDate);
+  String get _date => DateFormat.yMd().format(_lastDate);
 
   String get _time => _lastTime.format(context);
 
   void _selectDate() async {
+    print(Intl.getCurrentLocale());
     final DateTime? newDate = await showDatePicker(
         context: context,
         firstDate: DateTime.now(),
         initialDate: _lastDate,
-        lastDate: DateTime(2023),
+        lastDate: DateTime.now().add(const Duration(days: 365)),
         fieldHintText: 'When do you want to travel?');
 
     if (newDate != null) {
       setState(() {
-        _lastDate = newDate;
+        _lastDate = newDate.withTime(
+          hour: _lastTime.hour,
+          minute: _lastTime.minute,
+        );
         _dateController.text = _date;
       });
     }
@@ -139,8 +145,12 @@ class _SearchPageState extends State<SearchPage> {
                 padding: const EdgeInsets.only(top: 16.0),
                 child: ElevatedButton.icon(
                   icon: const Icon(Icons.search_outlined),
-                  onPressed: () =>
-                      Navigator.of(context).push(ResultPage.route()),
+                  onPressed: () {
+                    context
+                        .read<TripCatalogCubit>()
+                        .fetchCatalog(_start, _destination, _lastDate);
+                    Navigator.of(context).push(ResultPage.route());
+                  },
                   label: const Text('Search'),
                 ),
               ),
@@ -156,6 +166,6 @@ class _SearchPageState extends State<SearchPage> {
 }
 
 extension DateTimeExtension on DateTime {
-  DateTime withTime([int hour = 0, int minute = 0]) =>
+  DateTime withTime({int hour = 0, int minute = 0}) =>
       DateTime(year, month, day, hour, minute);
 }

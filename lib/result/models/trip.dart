@@ -1,23 +1,35 @@
-import 'package:flutter/material.dart';
+import 'package:equatable/equatable.dart';
+import 'package:trainvel/result/models/models.dart';
 
-class Trip {
-  final int id;
+class Trip extends Equatable {
   final String start;
   final String destination;
-  final DateTime date;
-  final TimeOfDay time;
-  final int delay;
-  final String carrier;
-  final double price;
+  final List<Train> trains;
 
-  Trip({
-    required this.id,
+  const Trip({
     required this.start,
     required this.destination,
-    required this.date,
-    required this.time,
-    required this.delay,
-    required this.carrier,
-    required this.price,
+    required this.trains,
   });
+
+  static const empty = Trip(
+    start: '',
+    destination: '',
+    trains: [],
+  );
+
+  Trip copyWith(
+    String? start,
+    String? destination,
+    List<Train>? trains,
+  ) {
+    return Trip(
+      start: start ?? this.start,
+      destination: destination ?? this.destination,
+      trains: trains ?? this.trains,
+    );
+  }
+
+  @override
+  List<Object?> get props => [start, destination, trains];
 }
