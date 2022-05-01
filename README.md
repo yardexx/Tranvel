@@ -1,16 +1,61 @@
-# trainvel
+# Tranvel
 
-Application for searching train connections.
+Simple Flutter application for searching train connections. Also informs about incidents and delays. 
+
+Created as project in free time, now available for anyone to take a look.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Clone this repository...
 
-A few resources to get you started if this is your first Flutter project:
+```shell
+git clone https://github.com/yardexx/tranvel.git
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+... change directory to project ...
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```shell
+cd tranvel
+```
+
+... and run application.
+
+```shell
+flutter run
+```
+
+## State management
+
+At first, Provider pattern was used. Right now, application relies on bloc pattern.
+
+### Why bloc?
+
+* better separation of concerns
+
+* it plays nice with repository pattern
+
+* future possibility of state persistence (Hydrated Bloc)
+
+## Roadmap
+
+* Search train connection (wip)
+
+* Fake API repository
+
+* State persistence
+
+* Ride history
+
+* Incidents
+
+* Simple profile
+
+* Onboarding
+
+## Ideas
+
+* Fake ticket buying
+
+* Real API
+
+If you like this repository, please give it a ⭐. It's free and it'll make me happy 😊
