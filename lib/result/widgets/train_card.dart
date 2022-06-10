@@ -4,24 +4,24 @@ import 'package:trainvel/result/models/models.dart';
 import 'package:trainvel/result/widgets/widgets.dart';
 
 class TrainCard extends StatelessWidget {
-  final Train train;
 
-  const TrainCard({required this.train, Key? key}) : super(key: key);
+  const TrainCard({required this.train, super.key});
+  final Train train;
 
   @override
   Widget build(BuildContext context) {
-    DateFormat dateFormat = DateFormat();
+    final dateFormat = DateFormat();
 
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16.0),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          width: 2.0,
+          width: 2,
           color: Colors.grey,
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -32,25 +32,25 @@ class TrainCard extends StatelessWidget {
                   text: dateFormat.toDate(train.journeyDate),
                   icon: Icons.calendar_today_outlined,
                 ),
-                IconText(
-                  text: dateFormat.toTime(
-                    train.journeyLength(train.journey.last.arrival,
-                        train.journey.first.departure),
-                  ),
-                  icon: Icons.schedule,
-                ),
+                // IconText(
+                //   text: dateFormat.toTime(
+                //     train.journeyLength(train.journey.last.arrival,
+                //         train.journey.first.departure),
+                //   ),
+                //   icon: Icons.schedule,
+                // ),
               ],
             ),
-            const Divider(thickness: 2.0),
-            Container(
+            const Divider(thickness: 2),
+            DecoratedBox(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(32.0),
+                borderRadius: BorderRadius.circular(32),
                 color: Colors.grey.shade400,
               ),
               child: Row(
                 children: [
                   CircleAvatar(
-                    radius: 16.0,
+                    radius: 16,
                     child: Text(
                       'EC',
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
@@ -60,14 +60,14 @@ class TrainCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    width: 8.0,
+                    width: 8,
                   ),
                   Text('${train.number} - ${train.name}'),
                 ],
               ),
             ),
             const SizedBox(
-              height: 8.0,
+              height: 8,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
