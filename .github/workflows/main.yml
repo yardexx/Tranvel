@@ -14,3 +14,4 @@ jobs:
     with:
       # Don't do coverage
       coverage_excludes: "*.dart"
+      flutter_version: "3.0.0"
