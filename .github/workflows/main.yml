@@ -1,4 +1,4 @@
-name: Flutter CI
+name: Tranvel Flutter CI
 
 on:
   push:
@@ -10,34 +10,8 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2.4.0
-
-      # Get dependencies
-      - run: flutter pub get
-
-      - name: Formatting
-        run: flutter format --set-exit-if-changed .
-
-      - name: Linter
-        run: flutter analyze .
-
-      - name: Dart code metrics
-        uses: dart-code-checker/dart-code-metrics-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Tests
-        run: flutter test
-
-      - name: Build APK
-        run: flutter build apk
-
-      - uses: actions/upload-artifact@v1
-        with:
-          name: release-apk
-          path: build/app/outputs/apk/release/app-release.apk
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
+    with:
+      # Don't do coverage
+      coverage_excludes: "*.dart"
+      dart_sdk: "stable"
