@@ -4,27 +4,26 @@ import 'package:fake_train_api/src/models/models.dart';
 import 'package:fake_train_api/src/utils/utils.dart';
 
 class TrainGenerator {
-
   TrainGenerator(this.startPoint, this.endPoint, this.baseDate);
+
   final String startPoint;
   final String endPoint;
   final DateTime baseDate;
 
   List<Train> generate(final int quantity) {
     final random = Random();
-    final journeyGenerator =
-        JourneyGenerator(startPoint, endPoint, baseDate);
+    final journeyGenerator = JourneyGenerator(startPoint, endPoint, baseDate);
 
     return List.generate(
       quantity,
       (_) => Train(
-        number: random.nextInt(700),
+        number: random.nextInt(700) + 100,
         trainCategory: TrainCategoryGenerator.random(),
-        carrier: _carriers[random.nextInt(_carriers.length - 1)],
+        carrier: _carriers[random.nextInt(_carriers.length)],
         journeyDate: baseDate,
         journey: journeyGenerator.generate(random.nextInt(10) + 2),
         delay: Delay(
-          delay: random.nextInt(15),
+          delay: random.nextInt(7),
           wasExpected: random.nextBool(),
         ),
       ),
@@ -32,10 +31,24 @@ class TrainGenerator {
   }
 
   final List<Carrier> _carriers = [
-    const Carrier(fullName: 'České Dráhy', shortName: 'ČD'),
     const Carrier(
-        fullName: 'Železničná spoločnosť Slovensko', shortName: 'ZSSK',),
-    const Carrier(fullName: 'RegioJet', shortName: 'RJ'),
+      fullName: 'České Dráhy',
+      shortName: 'ČD',
+      url:
+          'https://yt3.ggpht.com/ytc/AKedOLSiI42AVJLogC2M1rFw_eBJfWnZP10mOmmPmoCP8w=s900-c-k-c0x00ffffff-no-rj',
+    ),
+    const Carrier(
+      fullName: 'ZSSK',
+      shortName: 'ZSSK',
+      url:
+          'https://play-lh.googleusercontent.com/T6Bn81JH_G0vSZHonFwNZKLMNs440PE_1Am5qJH-zw2BI3vJtEkb6cZ5iBCu1zmfo9k9',
+    ),
+    const Carrier(
+      fullName: 'RegioJet',
+      shortName: 'RJ',
+      url:
+          'https://play-lh.googleusercontent.com/gXMTIJ0CAnQ395b8ituTtGidnTTdQBIC6gIqojgePX-q-R-BK5CS72pIYudZcPnWHf0',
+    ),
   ];
 }
 
