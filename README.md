@@ -1,8 +1,8 @@
 # Tranvel
 
-[![Codemagic build status][codemagic_ci_shield][codemagic_ci_link]
-[![ci: very good workflows][github_ci_shield][github_ci_link]
-[![style: very good analysis][style_shield][style_link]
+[![Codemagic build status][codemagic_ci_shield]][codemagic_ci_link]
+[![ci: very good workflows][github_ci_shield]][github_ci_link]
+[![style: very good analysis][style_shield]][style_link]
 
 Simple Flutter application for searching train connections. Also informs about incidents and delays. 
 
