@@ -6,9 +6,6 @@ part 'trip.g.dart';
 
 @JsonSerializable()
 class Trip extends Equatable {
-  final String start;
-  final String destination;
-  final List<Train> trains;
 
   const Trip({
     required this.start,
@@ -18,8 +15,12 @@ class Trip extends Equatable {
 
   factory Trip.fromJson(final Map<String, dynamic> json) =>
       _$TripFromJson(json);
+  final String start;
+  final String destination;
+  final List<Train> trains;
 
   Map<String, dynamic> toJson() => _$TripToJson(this);
 
+  @override
   List<Object?> get props => [start, destination, trains];
 }
