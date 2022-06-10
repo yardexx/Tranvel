@@ -4,7 +4,7 @@ import 'package:trainvel/result/cubit/trip_catalog_cubit.dart';
 import 'package:trainvel/result/result.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage._({Key? key}) : super(key: key);
+  const ResultPage._();
 
   static Route<String> route() =>
       MaterialPageRoute(builder: (_) => const ResultPage._());
@@ -29,14 +29,14 @@ class ResultPage extends StatelessWidget {
               );
             case TripStatus.success:
               return ListView.separated(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16),
                 itemCount: state.trip.trains.length,
                 itemBuilder: (_, index) {
                   return TrainCard(
                     train: state.trip.trains[index],
                   );
                 },
-                separatorBuilder: (_, __) => const SizedBox(height: 16.0),
+                separatorBuilder: (_, __) => const SizedBox(height: 16),
               );
             case TripStatus.failure:
               return const Center(
