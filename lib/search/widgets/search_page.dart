@@ -5,7 +5,7 @@ import 'package:trainvel/result/cubit/trip_catalog_cubit.dart';
 import 'package:trainvel/result/result.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage._({Key? key}) : super(key: key);
+  const SearchPage._();
 
   static Route<String> route() =>
       MaterialPageRoute(builder: (_) => const SearchPage._());
@@ -31,27 +31,29 @@ class _SearchPageState extends State<SearchPage> {
 
   String get _time => _lastTime.format(context);
 
-  void _selectDate() async {
-    final DateTime? newDate = await showDatePicker(
+  Future<void> _selectDate() async {
+    final newDate = await showDatePicker(
         context: context,
         firstDate: DateTime.now(),
         initialDate: _lastDate,
         lastDate: DateTime.now().add(const Duration(days: 365)),
-        fieldHintText: 'When do you want to travel?');
+        fieldHintText: 'When do you want to travel?',);
 
     if (newDate != null) {
-      setState(() {
-        _lastDate = newDate.withTime(
-          hour: _lastTime.hour,
-          minute: _lastTime.minute,
-        );
-        _dateController.text = _date;
-      });
+      setState(
+        () {
+          _lastDate = newDate.withTime(
+            hour: _lastTime.hour,
+            minute: _lastTime.minute,
+          );
+          _dateController.text = _date;
+        },
+      );
     }
   }
 
-  void _selectTime() async {
-    final TimeOfDay? newTime = await showTimePicker(
+  Future<void> _selectTime() async {
+    final newTime = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
     );
@@ -72,7 +74,7 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
+    final theme = Theme.of(context);
     _dateController.text = _date;
     _timeController.text = _time;
     return Scaffold(
@@ -81,7 +83,7 @@ class _SearchPageState extends State<SearchPage> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -120,11 +122,11 @@ class _SearchPageState extends State<SearchPage> {
                       icon: Icon(Icons.calendar_today_outlined),
                       labelText: 'Date',
                     ),
-                    onTap: () => _selectDate(),
+                    onTap: _selectDate,
                   ),
                 ),
                 const SizedBox(
-                  width: 32.0,
+                  width: 32,
                 ),
                 Expanded(
                   child: TextField(
@@ -134,14 +136,14 @@ class _SearchPageState extends State<SearchPage> {
                       icon: Icon(Icons.schedule_outlined),
                       labelText: 'Time',
                     ),
-                    onTap: () => _selectTime(),
+                    onTap: _selectTime,
                   ),
                 ),
               ],
             ),
             Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 16.0),
+                padding: const EdgeInsets.only(top: 16),
                 child: ElevatedButton.icon(
                   icon: const Icon(Icons.search_outlined),
                   onPressed: () {
@@ -155,7 +157,7 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ),
             const SizedBox(
-              height: 16.0,
+              height: 16,
             ),
           ],
         ),

@@ -3,11 +3,11 @@ import 'package:intl/intl.dart';
 import 'package:trainvel/home/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
+    final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16),
           child: Column(
             children: [
               Row(
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Hope, you\'re having a good day.',
+                        "Hope, you're having a good day.",
                         style: theme.textTheme.subtitle1,
                       ),
                     ],
@@ -41,24 +41,24 @@ class HomePage extends StatelessWidget {
                   const CircleAvatar(
                     radius: 32,
                     foregroundImage: NetworkImage(
-                        'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
+                        'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',),
                   ),
                 ],
               ),
               const SizedBox(
-                height: 16.0,
+                height: 16,
               ),
               const SearchCard(),
               const SizedBox(
-                height: 16.0,
+                height: 16,
               ),
               const IncidentCard(),
               const SizedBox(
-                height: 16.0,
+                height: 16,
               ),
               Card(
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

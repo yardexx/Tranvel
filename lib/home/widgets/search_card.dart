@@ -3,19 +3,19 @@ import 'package:trainvel/search/search.dart';
 
 class SearchCard extends StatelessWidget {
   const SearchCard({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
+    final theme = Theme.of(context);
 
     return Card(
       color: theme.primaryColor,
       child: InkWell(
         onTap: () => Navigator.of(context).push(SearchPage.route()),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
