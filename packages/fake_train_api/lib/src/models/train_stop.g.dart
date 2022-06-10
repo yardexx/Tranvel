@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter, cast_nullable_to_non_nullable
+// ignore_for_file: implicit_dynamic_parameter
 
 part of 'train_stop.dart';
 
@@ -14,9 +14,9 @@ TrainStop _$TrainStopFromJson(Map<String, dynamic> json) => $checkedCreate(
       ($checkedConvert) {
         final val = TrainStop(
           arrival: $checkedConvert('arrival',
-              (v) => const DateTimeEpochConverter().fromJson(v as int),),
+              (v) => const DateTimeEpochConverter().fromJson(v as int)),
           departure: $checkedConvert('departure',
-              (v) => const DateTimeEpochConverter().fromJson(v as int),),
+              (v) => const DateTimeEpochConverter().fromJson(v as int)),
           name: $checkedConvert('name', (v) => v as String),
         );
         return val;

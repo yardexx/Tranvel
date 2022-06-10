@@ -5,23 +5,27 @@ part 'train.g.dart';
 
 enum TrainCategory {
   @JsonValue('Os')
-  train,
+  train('Os'),
   @JsonValue('R')
-  fastTrain,
+  fastTrain('R'),
   @JsonValue('Ex')
-  express,
+  express('Ex'),
   @JsonValue('REx')
-  regionalExpress,
+  regionalExpress('REx'),
   @JsonValue('rj')
-  railjet,
+  railjet('rj'),
   @JsonValue('IC')
-  interCity,
+  interCity('IC'),
   @JsonValue('ICE')
-  interCityExpress,
+  interCityExpress('ICE'),
   @JsonValue('EC')
-  euroCity,
+  euroCity('EC'),
   @JsonValue('SC')
-  superCity,
+  superCity('SC');
+
+  final String shortcut;
+  // ignore: sort_constructors_first
+  const TrainCategory(this.shortcut);
 }
 
 @JsonSerializable(explicitToJson: true)

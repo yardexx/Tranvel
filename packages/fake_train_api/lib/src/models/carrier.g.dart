@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter, cast_nullable_to_non_nullable
+// ignore_for_file: implicit_dynamic_parameter
 
 part of 'carrier.dart';
 
@@ -15,6 +15,7 @@ Carrier _$CarrierFromJson(Map<String, dynamic> json) => $checkedCreate(
         final val = Carrier(
           fullName: $checkedConvert('full_name', (v) => v as String),
           shortName: $checkedConvert('short_name', (v) => v as String),
+          url: $checkedConvert('url', (v) => v as String),
         );
         return val;
       },
@@ -24,4 +25,5 @@ Carrier _$CarrierFromJson(Map<String, dynamic> json) => $checkedCreate(
 Map<String, dynamic> _$CarrierToJson(Carrier instance) => <String, dynamic>{
       'full_name': instance.fullName,
       'short_name': instance.shortName,
+      'url': instance.url,
     };

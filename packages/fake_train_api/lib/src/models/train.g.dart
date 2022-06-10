@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter, cast_nullable_to_non_nullable
+// ignore_for_file: implicit_dynamic_parameter
 
 part of 'train.dart';
 
@@ -15,18 +15,18 @@ Train _$TrainFromJson(Map<String, dynamic> json) => $checkedCreate(
         final val = Train(
           number: $checkedConvert('number', (v) => v as int),
           trainCategory: $checkedConvert(
-              'train_category', (v) => $enumDecode(_$TrainCategoryEnumMap, v),),
+              'train_category', (v) => $enumDecode(_$TrainCategoryEnumMap, v)),
           carrier: $checkedConvert(
-              'carrier', (v) => Carrier.fromJson(v as Map<String, dynamic>),),
+              'carrier', (v) => Carrier.fromJson(v as Map<String, dynamic>)),
           journeyDate: $checkedConvert('journey_date',
-              (v) => const DateTimeEpochConverter().fromJson(v as int),),
+              (v) => const DateTimeEpochConverter().fromJson(v as int)),
           journey: $checkedConvert(
               'journey',
               (v) => (v as List<dynamic>)
                   .map((e) => TrainStop.fromJson(e as Map<String, dynamic>))
-                  .toList(),),
+                  .toList()),
           delay: $checkedConvert(
-              'delay', (v) => Delay.fromJson(v as Map<String, dynamic>),),
+              'delay', (v) => Delay.fromJson(v as Map<String, dynamic>)),
           name: $checkedConvert('name', (v) => v as String?),
         );
         return val;
