@@ -1,5 +1,4 @@
 class Location {
-
   const Location({
     required this.arrival,
     required this.departure,

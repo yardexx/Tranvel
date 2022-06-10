@@ -5,7 +5,6 @@ part 'train_stop.g.dart';
 
 @JsonSerializable()
 class TrainStop {
-
   const TrainStop({
     required this.arrival,
     required this.departure,
@@ -21,5 +20,4 @@ class TrainStop {
   final DateTime departure;
 
   Map<String, dynamic> toJson() => _$TrainStopToJson(this);
-
 }

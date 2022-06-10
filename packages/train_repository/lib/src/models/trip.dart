@@ -6,7 +6,6 @@ part 'trip.g.dart';
 
 @JsonSerializable()
 class Trip extends Equatable {
-
   const Trip({
     required this.start,
     required this.destination,

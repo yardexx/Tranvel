@@ -33,11 +33,12 @@ class _SearchPageState extends State<SearchPage> {
 
   Future<void> _selectDate() async {
     final newDate = await showDatePicker(
-        context: context,
-        firstDate: DateTime.now(),
-        initialDate: _lastDate,
-        lastDate: DateTime.now().add(const Duration(days: 365)),
-        fieldHintText: 'When do you want to travel?',);
+      context: context,
+      firstDate: DateTime.now(),
+      initialDate: _lastDate,
+      lastDate: DateTime.now().add(const Duration(days: 365)),
+      fieldHintText: 'When do you want to travel?',
+    );
 
     if (newDate != null) {
       setState(

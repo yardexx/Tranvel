@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:fake_train_api/src/models/models.dart';
 
 class JourneyGenerator {
-
   JourneyGenerator(this.startPoint, this.endPoint, this.startDate);
   final String startPoint;
   final String endPoint;

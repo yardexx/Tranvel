@@ -42,7 +42,7 @@ class IncidentCard extends StatelessWidget {
             ),
           ),
           children: [
-            Theme(data: theme ,child: const Divider()),
+            Theme(data: theme, child: const Divider()),
             const SizedBox(
               height: 150,
               width: double.infinity,
