@@ -14,4 +14,4 @@ jobs:
     with:
       # Don't do coverage
       coverage_excludes: "*.dart"
-      dart_sdk: "stable"
+      flutter_sdk: "stable"
