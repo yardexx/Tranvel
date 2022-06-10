@@ -20,24 +20,25 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     initializeDateFormatting();
     return BlocProvider(
-        create: (_) => TripCatalogCubit(TrainRepository()),
-        child: MaterialApp(
-          title: 'Trainvel',
-          theme: ThemeData(
-            useMaterial3: true,
-            colorSchemeSeed: Colors.blue,
-            textTheme: GoogleFonts.montserratTextTheme(),
-            scaffoldBackgroundColor: Colors.grey.shade200,
-            cardTheme: CardTheme(
-              elevation: 8,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
+      create: (_) => TripCatalogCubit(TrainRepository()),
+      child: MaterialApp(
+        title: 'Trainvel',
+        theme: ThemeData(
+          useMaterial3: true,
+          colorSchemeSeed: Colors.blue,
+          textTheme: GoogleFonts.montserratTextTheme(),
+          scaffoldBackgroundColor: Colors.grey.shade200,
+          cardTheme: CardTheme(
+            elevation: 8,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
             ),
           ),
-          home: const SafeArea(
-            child: HomePage(),
-          ),
-        ),);
+        ),
+        home: const SafeArea(
+          child: HomePage(),
+        ),
+      ),
+    );
   }
 }

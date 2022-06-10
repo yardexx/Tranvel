@@ -4,7 +4,6 @@ part 'carrier.g.dart';
 
 @JsonSerializable()
 class Carrier {
-
   const Carrier({
     required this.fullName,
     required this.shortName,
@@ -19,5 +18,4 @@ class Carrier {
   final String url;
 
   Map<String, dynamic> toJson() => _$CarrierToJson(this);
-
 }

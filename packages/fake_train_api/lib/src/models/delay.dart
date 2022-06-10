@@ -5,7 +5,6 @@ part 'delay.g.dart';
 
 @JsonSerializable()
 class Delay {
-
   const Delay({
     required this.delay,
     required this.wasExpected,
@@ -18,5 +17,4 @@ class Delay {
   final bool wasExpected;
 
   Map<String, dynamic> toJson() => _$DelayToJson(this);
-
 }

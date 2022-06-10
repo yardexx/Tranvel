@@ -30,7 +30,6 @@ enum TrainCategory {
 
 @JsonSerializable(explicitToJson: true)
 class Train {
-
   const Train({
     required this.number,
     required this.trainCategory,
