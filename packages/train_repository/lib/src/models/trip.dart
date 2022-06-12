@@ -14,6 +14,7 @@ class Trip extends Equatable {
 
   factory Trip.fromJson(final Map<String, dynamic> json) =>
       _$TripFromJson(json);
+
   final String start;
   final String destination;
   final List<Train> trains;
