@@ -13,7 +13,7 @@ class TrainCard extends StatelessWidget {
     final dateFormat = DateFormat();
 
     return InkWell(
-      onTap: () => 'I am tapped.',
+      onTap: () {},
       child: DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
