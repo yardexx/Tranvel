@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:fake_train_api/src/models/models.dart';
 import 'package:fake_train_api/src/utils/utils.dart';
+import 'package:uuid/uuid.dart';
 
 class TrainGenerator {
   TrainGenerator(this.startPoint, this.endPoint, this.baseDate);
@@ -16,7 +17,8 @@ class TrainGenerator {
 
     return List.generate(
       quantity,
-      (_) => Train(
+      (int index) => Train(
+        id: const Uuid().v4(),
         number: random.nextInt(700) + 100,
         trainCategory: TrainCategoryGenerator.random(),
         carrier: _carriers[random.nextInt(_carriers.length)],
