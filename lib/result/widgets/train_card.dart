@@ -13,7 +13,16 @@ class TrainCard extends StatelessWidget {
     final dateFormat = DateFormat();
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        showModalBottomSheet<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return BuySheetWidget(
+              train: train,
+            );
+          },
+        );
+      },
       child: DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
