@@ -28,6 +28,13 @@ class App extends StatelessWidget {
           colorSchemeSeed: Colors.blue,
           textTheme: GoogleFonts.montserratTextTheme(),
           scaffoldBackgroundColor: Colors.grey.shade200,
+          bottomSheetTheme: const BottomSheetThemeData(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(16),
+              )
+            )
+          ),
           cardTheme: CardTheme(
             elevation: 8,
             shape: RoundedRectangleBorder(
