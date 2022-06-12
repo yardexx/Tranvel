@@ -31,6 +31,7 @@ enum TrainCategory {
 @JsonSerializable(explicitToJson: true)
 class Train {
   const Train({
+    required this.id,
     required this.number,
     required this.trainCategory,
     required this.carrier,
@@ -42,6 +43,7 @@ class Train {
 
   factory Train.fromJson(final Map<String, dynamic> json) =>
       _$TrainFromJson(json);
+  final String id;
   final int number;
   final String? name;
   final TrainCategory trainCategory;

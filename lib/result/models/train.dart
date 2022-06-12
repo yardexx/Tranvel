@@ -2,6 +2,7 @@ import 'package:trainvel/result/models/models.dart';
 
 class Train {
   const Train({
+    required this.id,
     required this.number,
     required this.carrier,
     required this.journeyDate,
@@ -11,6 +12,7 @@ class Train {
     this.name,
   });
 
+  final String id;
   final int number;
   final String? name;
   final Carrier carrier;
