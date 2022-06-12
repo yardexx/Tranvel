@@ -16,6 +16,7 @@ dependencies:
   flutter_bloc: any
   google_fonts: ^2.3.1
   intl: any
+  sliding_up_panel: ^2.0.0+1
   train_repository:
     path: packages/train_repository
 
