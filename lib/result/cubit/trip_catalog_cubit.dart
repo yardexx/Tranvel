@@ -19,12 +19,6 @@ class TripCatalogCubit extends Cubit<TripState> {
     final trip = Trip.fromRepository(
       await _trainRepository.getTrip(start, destination, date),
     );
-    // emit(
-    //   state.copyWith(
-    //     status: TripStatus.success,
-    //     trip: trip,
-    //   ),
-    // );
     emit(
       state.copyWith(
         status: TripStatus.success,

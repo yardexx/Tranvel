@@ -5,6 +5,8 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:train_repository/train_repository.dart';
 import 'package:trainvel/home/home.dart';
 import 'package:trainvel/result/cubit/trip_catalog_cubit.dart';
+import 'package:trainvel/ticket_catalog/bloc/catalog_bloc.dart';
+import 'package:trainvel/ticket_repository.dart';
 
 void main() {
   BlocOverrides.runZoned(
@@ -19,8 +21,15 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     initializeDateFormatting();
-    return BlocProvider(
-      create: (_) => TripCatalogCubit(TrainRepository()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => TripCatalogCubit(TrainRepository()),
+        ),
+        BlocProvider(
+          create: (_) => CatalogBloc(TicketRepository()),
+        ),
+      ],
       child: MaterialApp(
         title: 'Trainvel',
         theme: ThemeData(
