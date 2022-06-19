@@ -15,14 +15,18 @@ dependencies:
     sdk: flutter
   flutter_bloc: any
   google_fonts: ^2.3.1
+  hydrated_bloc: ^8.1.0
   intl: any
+  json_annotation: ^4.5.0
   sliding_up_panel: ^2.0.0+1
   train_repository:
     path: packages/train_repository
 
 dev_dependencies:
+  build_runner: ^2.0.0
   flutter_test:
     sdk: flutter
+  json_serializable: ^6.2.0
   very_good_analysis: ^3.0.0
 
 flutter:

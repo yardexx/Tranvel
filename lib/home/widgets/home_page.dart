@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          const CurrentTicketPanel(),
+          // const CurrentTicketPanel(),
         ],
       ),
     );

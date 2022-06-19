@@ -1,18 +1,26 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:train_repository/train_repository.dart';
 import 'package:trainvel/home/home.dart';
 import 'package:trainvel/result/cubit/trip_catalog_cubit.dart';
-import 'package:trainvel/ticket_catalog/bloc/catalog_bloc.dart';
+import 'package:trainvel/ticket_catalog/cubit/catalog_cubit.dart';
 import 'package:trainvel/ticket_repository.dart';
+import 'package:trainvel/user/cubit/user_cubit.dart';
 
-void main() {
-  BlocOverrides.runZoned(
+void main() async {
+  HydratedBlocOverrides.runZoned(
     () => runApp(const App()),
+    storage: await HydratedStorage.build(
+      storageDirectory: kIsWeb
+          ? HydratedStorage.webStorageDirectory
+          : await getTemporaryDirectory(),
+    ),
   );
-  runApp(const App());
 }
 
 class App extends StatelessWidget {
@@ -27,7 +35,10 @@ class App extends StatelessWidget {
           create: (_) => TripCatalogCubit(TrainRepository()),
         ),
         BlocProvider(
-          create: (_) => CatalogBloc(TicketRepository()),
+          create: (_) => CatalogCubit(TicketRepository()),
+        ),
+        BlocProvider(
+          create: (_) => UserCubit(),
         ),
       ],
       child: MaterialApp(

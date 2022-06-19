@@ -1,5 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trainvel/result/models/models.dart';
+import 'package:trainvel/ticket_catalog/cubit/catalog_cubit.dart';
+import 'package:trainvel/ticket_catalog/models/ticket.dart';
 import 'package:trainvel/utils/utils.dart';
 
 class BuySheetWidget extends StatelessWidget {
@@ -30,7 +35,16 @@ class BuySheetWidget extends StatelessWidget {
                 // Background color
                 primary: Theme.of(context).colorScheme.primary,
               ).copyWith(elevation: ButtonStyleButton.allOrNull(0)),
-              onPressed: () => Navigator.pop(context),
+              onPressed: () {
+                context.read<CatalogCubit>().addTicket(
+                      Ticket(
+                        id: Random().nextInt(923512),
+                        train: train,
+                        price: Random().nextDouble(),
+                      ),
+                    );
+                Navigator.pop(context);
+              },
               child: const Text('Buy ticket'),
             ),
           ),
