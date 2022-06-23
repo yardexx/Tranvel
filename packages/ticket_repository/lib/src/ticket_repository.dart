@@ -1,11 +1,12 @@
 import 'package:tickets_api/tickets_api.dart';
 
 class TicketsRepository {
-  final TicketsApi _ticketsApi;
+  TicketsRepository({
+    final TicketsApi? ticketsApi,
+    required TicketDatabase database,
+  }) : _ticketsApi = ticketsApi ?? TicketsApi(database: database);
 
-  TicketsRepository(
-      {final TicketsApi? ticketsApi, required TicketDatabase database})
-      : _ticketsApi = ticketsApi ?? TicketsApi(database: database);
+  final TicketsApi _ticketsApi;
 
   Future<List<Ticket>> getAllTickets() => _ticketsApi.getTickets();
 
