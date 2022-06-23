@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:train_repository/train_repository.dart' hide Trip;
 import 'package:trainvel/result/models/trip.dart';
 
@@ -19,12 +19,6 @@ class TripCatalogCubit extends Cubit<TripState> {
     final trip = Trip.fromRepository(
       await _trainRepository.getTrip(start, destination, date),
     );
-    // emit(
-    //   state.copyWith(
-    //     status: TripStatus.success,
-    //     trip: trip,
-    //   ),
-    // );
     emit(
       state.copyWith(
         status: TripStatus.success,

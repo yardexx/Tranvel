@@ -16,6 +16,7 @@ class Trip extends Equatable {
       trains: trip.trains
           .map(
             (element) => Train(
+              id: element.id,
               number: element.number,
               name: element.name,
               delay: element.delay.delay,

@@ -1,39 +1,30 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Train Repository
+[![style: very good analysis][style_shield]][style_link]
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+## Overview
+This package provides provides wrapper around `Fake Train API` just to mimic how would that be in
+the reality land. 
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+Encapsulates Fake Train API data into more consumable `Trip` model.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## Why?
+Separation of concerns. App shouldn't really know WHERE it gets data from. It just wants results.
+Whether it comes from API or local database.
 
-## Features
+## Models
+Description of models chronologically.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+### trip
+Trip from point A to point B which hold List of data that makes this route.
 
-## Getting started
+### train (from `Fake Train API`)
+A little simplification "stolen" from `Fake Train API` instead of having (the same) model. 
+(Umm... yeah, HUGE simplification...).
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Idea list
+Current idea list for improvement:
+* getting tickets from `ticket_database` package
+* tests (Umm... yeah (x2))
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
-```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+[style_shield]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
+[style_link]: https://pub.dev/packages/very_good_analysis

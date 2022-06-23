@@ -13,6 +13,7 @@ Train _$TrainFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = Train(
+          id: $checkedConvert('id', (v) => v as String),
           number: $checkedConvert('number', (v) => v as int),
           trainCategory: $checkedConvert(
               'train_category', (v) => $enumDecode(_$TrainCategoryEnumMap, v)),
@@ -38,6 +39,7 @@ Train _$TrainFromJson(Map<String, dynamic> json) => $checkedCreate(
     );
 
 Map<String, dynamic> _$TrainToJson(Train instance) => <String, dynamic>{
+      'id': instance.id,
       'number': instance.number,
       'name': instance.name,
       'train_category': _$TrainCategoryEnumMap[instance.trainCategory],

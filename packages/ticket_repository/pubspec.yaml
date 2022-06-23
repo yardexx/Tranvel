@@ -1,0 +1,15 @@
+name: ticket_repository
+description: A Dart repository which manages ticket domain.
+version: 0.0.1
+publish_to: 'none'
+
+environment:
+  sdk: '>=2.17.3 <3.0.0'
+
+dependencies:
+  tickets_api:
+    path: ../tickets_api
+
+dev_dependencies:
+  test: ^1.16.0
+  very_good_analysis: ^3.0.0

@@ -1,39 +1,51 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Fake Train API
+[![style: very good analysis][style_shield]][style_link]
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+## Overview
+This package provides provides simple way of generating and providing fake data about trains.
+This also brought some little advantages such as offline availability (since its fully local) and
+also modifiability (nobody can really stop you from doing it).
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+Notice that this package sends final data (like you would pull from API) rather then faked http 
+answer to call.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+*Also this "API" is reliable = never sends "failed" answers*
 
-## Features
+## Why?
+Unfortunately, there is no easy-to-use API for getting train connections in Slovakia and/or Czechia.
+The most popular in here is iDOS/CP.sk which does not provide convenient way of getting data (
+scrapping just does not feel right). So instead this package came as answer.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Models
+Description of models chronologically.
 
-## Getting started
+### carrier
+Train carrier of given train. 
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+### train_stop
+Single place where train stops.
 
-## Usage
+### delay
+Delay in minutes with information if delay was planned (e.g. train track construction) or not
+(e.g. train accident).
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+### train
+Consists of train category enum (contains all czech and slovak related categories) as well as
+additional information about train
 
-```dart
-const like = 'sample';
-```
+For more details, please refer to the model definitions.
 
-## Additional information
+## Utils
+Utils contains actual "random" generators of trains and journeys. *Names of TrainStop 
+are not generated!* 
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+## Idea list
+Current idea list for improvement:
+* generating train incidents
+* random failure generating
+* random not found generating
+* tests (Umm... yeah)
+* independent package
+
+[style_shield]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
+[style_link]: https://pub.dev/packages/very_good_analysis
