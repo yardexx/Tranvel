@@ -68,7 +68,6 @@ class TripHistoryCard extends StatelessWidget {
                     return const Center(
                       child: Text('Failed to load history'),
                     );
-                    break;
                 }
               },
             ),

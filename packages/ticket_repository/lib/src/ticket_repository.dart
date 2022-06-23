@@ -1,4 +1,3 @@
-import 'package:ticket_repository/ticket_repository.dart';
 import 'package:tickets_api/tickets_api.dart';
 
 class TicketsRepository {

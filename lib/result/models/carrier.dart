@@ -10,7 +10,8 @@ class Carrier {
     required this.url,
   });
 
-  factory Carrier.fromJson(Map<String, dynamic> json) => _$CarrierFromJson(json);
+  factory Carrier.fromJson(Map<String, dynamic> json) =>
+      _$CarrierFromJson(json);
 
   Map<String, dynamic> toJson() => _$CarrierToJson(this);
 

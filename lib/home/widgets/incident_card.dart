@@ -71,7 +71,6 @@ class _IncidentCardState extends State<IncidentCard> {
                           _nameController.text,
                           _descriptionController.text
                         ]);
-                        print(incidents);
                         Navigator.pop(context);
                       }),
                       child: const Text('Add'),

@@ -38,7 +38,7 @@ class BuySheetWidget extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     action: SnackBarAction(label: 'Undo', onPressed: () {}),
-                    content: Text('Ticket bought'),
+                    content: const Text('Ticket bought'),
                   ),
                 );
               },
@@ -52,7 +52,6 @@ class BuySheetWidget extends StatelessWidget {
             width: double.infinity,
             child: OutlinedButton(
               onPressed: () {
-                print('Operation cancelled');
                 Navigator.pop(context);
               },
               child: const Text('Cancel'),
