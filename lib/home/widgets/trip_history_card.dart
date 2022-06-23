@@ -29,7 +29,7 @@ class TripHistoryCard extends StatelessWidget {
                   case TicketCatalogStatus.initial:
                   case TicketCatalogStatus.loading:
                     return const Center(
-                      child: CircularProgressIndicator(),
+                      child: Text('Loading'),
                     );
                   case TicketCatalogStatus.success:
                     final trips = state.tickets;
