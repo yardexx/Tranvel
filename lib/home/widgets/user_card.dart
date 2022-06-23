@@ -30,7 +30,7 @@ class UserCard extends StatelessWidget {
               ),
               Text(
                 user.name == 'Unknown'
-                    ? 'Did you know that you can create local account?'
+                    ? 'You can create local account.'
                     : "Hope, you're having a good day.",
                 style: theme.textTheme.subtitle1,
               ),

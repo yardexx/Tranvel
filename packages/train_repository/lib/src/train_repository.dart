@@ -12,7 +12,6 @@ class TrainRepository {
     final String destination,
     final DateTime date,
   ) async {
-
     final trains =
         await _fakeTrainApiClient.getTrainJourney(start, destination, date);
 

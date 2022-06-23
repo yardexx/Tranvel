@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:trainvel/ticket_catalog/cubit/catalog_cubit.dart';
+import 'package:trainvel/ticket_catalog/cubit/ticket_catalog_cubit.dart';
 
 class TripHistoryCard extends StatelessWidget {
   const TripHistoryCard({
@@ -11,6 +11,7 @@ class TripHistoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    context.watch<TicketCatalogCubit>().fetchTickets();
 
     return Card(
       child: Padding(
@@ -22,16 +23,16 @@ class TripHistoryCard extends StatelessWidget {
               'Last rides',
               style: theme.textTheme.headline5,
             ),
-            BlocBuilder<CatalogCubit, CatalogState>(
+            BlocBuilder<TicketCatalogCubit, TicketCatalogState>(
               builder: (context, state) {
                 switch (state.status) {
-                  case CatalogStatus.initial:
-                  case CatalogStatus.loading:
+                  case TicketCatalogStatus.initial:
+                  case TicketCatalogStatus.loading:
                     return const Center(
                       child: CircularProgressIndicator(),
                     );
-                  case CatalogStatus.success:
-                    final trips = state.catalog.tickets.reversed.toList();
+                  case TicketCatalogStatus.success:
+                    final trips = state.tickets;
                     if (trips.isEmpty) {
                       return const Center(
                         child: Text('No recent trips'),
@@ -63,7 +64,7 @@ class TripHistoryCard extends StatelessWidget {
                       },
                       separatorBuilder: (_, __) => const Divider(),
                     );
-                  case CatalogStatus.failure:
+                  case TicketCatalogStatus.failure:
                     return const Center(
                       child: Text('Failed to load history'),
                     );

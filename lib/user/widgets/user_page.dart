@@ -21,7 +21,6 @@ class UserPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('User profile'),
-        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8),

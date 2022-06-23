@@ -6,7 +6,13 @@ class JourneyGenerator {
   JourneyGenerator(this.startPoint, this.endPoint, this.startDate);
   final String startPoint;
   final String endPoint;
-  final DateTime startDate;
+  DateTime startDate;
+
+  DateTime get baseDate => startDate;
+
+  set baseDate(DateTime date){
+    startDate = date;
+  }
 
   List<TrainStop> generate(final int quantity) {
     final random = Random();

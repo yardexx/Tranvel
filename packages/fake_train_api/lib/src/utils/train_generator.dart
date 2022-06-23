@@ -9,15 +9,18 @@ class TrainGenerator {
 
   final String startPoint;
   final String endPoint;
-  final DateTime baseDate;
+  DateTime baseDate;
 
   List<Train> generate(final int quantity) {
     final random = Random();
     final journeyGenerator = JourneyGenerator(startPoint, endPoint, baseDate);
 
-    return List.generate(
-      quantity,
-      (int index) => Train(
+    return List.generate(quantity, (int index) {
+      baseDate = baseDate.add(Duration(minutes: random.nextInt(15) + 15));
+
+      journeyGenerator.baseDate = baseDate;
+
+      return Train(
         id: const Uuid().v4(),
         number: random.nextInt(700) + 100,
         trainCategory: TrainCategoryGenerator.random(),
@@ -28,8 +31,8 @@ class TrainGenerator {
           delay: random.nextInt(7),
           wasExpected: random.nextBool(),
         ),
-      ),
-    );
+      );
+    });
   }
 
   final List<Carrier> _carriers = [

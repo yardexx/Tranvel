@@ -1,26 +1,26 @@
-import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'dart:convert';
+
+import 'package:tickets_api/tickets_api.dart' as database;
 import 'package:trainvel/result/models/train.dart';
 
-part 'ticket.g.dart';
-
-@JsonSerializable()
-class Ticket extends Equatable {
+class Ticket {
   const Ticket({
-    required this.id,
+    this.id,
     required this.train,
     required this.price,
+    required this.date,
   });
 
-  factory Ticket.fromJson(Map<String, dynamic> json) =>
-      _$TicketFromJson(json);
+  factory Ticket.fromRepository(database.Ticket ticket) {
+    return Ticket(
+      train: Train.fromJson(jsonDecode(ticket.train) as Map<String, dynamic>),
+      price: ticket.price,
+      date: DateTime.fromMillisecondsSinceEpoch(ticket.date),
+    );
+  }
 
-  Map<String, dynamic> toJson() => _$TicketToJson(this);
-
-  final int id;
+  final int? id;
   final Train train;
   final double price;
-
-  @override
-  List<Object?> get props => [id, train, price];
+  final DateTime date;
 }

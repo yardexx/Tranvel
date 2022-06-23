@@ -1,10 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trainvel/result/models/models.dart';
-import 'package:trainvel/ticket_catalog/cubit/catalog_cubit.dart';
-import 'package:trainvel/ticket_catalog/models/ticket.dart';
+import 'package:trainvel/ticket_catalog/cubit/ticket_catalog_cubit.dart';
 import 'package:trainvel/utils/utils.dart';
 
 class BuySheetWidget extends StatelessWidget {
@@ -14,6 +11,8 @@ class BuySheetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 32,
@@ -30,20 +29,18 @@ class BuySheetWidget extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                // Foreground color
-                onPrimary: Theme.of(context).colorScheme.onPrimary,
-                // Background color
-                primary: Theme.of(context).colorScheme.primary,
+                onPrimary: theme.colorScheme.onPrimary,
+                primary: theme.colorScheme.primary,
               ).copyWith(elevation: ButtonStyleButton.allOrNull(0)),
               onPressed: () {
-                context.read<CatalogCubit>().addTicket(
-                      Ticket(
-                        id: Random().nextInt(923512),
-                        train: train,
-                        price: Random().nextDouble(),
-                      ),
-                    );
+                context.read<TicketCatalogCubit>().saveTicket(train);
                 Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    action: SnackBarAction(label: 'Undo', onPressed: () {}),
+                    content: Text('Ticket bought'),
+                  ),
+                );
               },
               child: const Text('Buy ticket'),
             ),

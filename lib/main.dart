@@ -5,16 +5,23 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:ticket_repository/ticket_repository.dart';
+import 'package:tickets_api/tickets_api.dart';
 import 'package:train_repository/train_repository.dart';
+
 import 'package:trainvel/home/home.dart';
-import 'package:trainvel/result/cubit/trip_catalog_cubit.dart';
-import 'package:trainvel/ticket_catalog/cubit/catalog_cubit.dart';
-import 'package:trainvel/ticket_repository.dart';
-import 'package:trainvel/user/cubit/user_cubit.dart';
+import 'package:trainvel/result/result.dart';
+import 'package:trainvel/ticket_catalog/cubit/ticket_catalog_cubit.dart';
+import 'package:trainvel/user/user.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final database =
+      await $FloorTicketDatabase.databaseBuilder('ticket_database.db').build();
+
   HydratedBlocOverrides.runZoned(
-    () => runApp(const App()),
+    () => runApp(App(database)),
     storage: await HydratedStorage.build(
       storageDirectory: kIsWeb
           ? HydratedStorage.webStorageDirectory
@@ -24,7 +31,9 @@ void main() async {
 }
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App(this.database, {super.key});
+
+  final TicketDatabase database;
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +44,12 @@ class App extends StatelessWidget {
           create: (_) => TripCatalogCubit(TrainRepository()),
         ),
         BlocProvider(
-          create: (_) => CatalogCubit(TicketRepository()),
-        ),
-        BlocProvider(
           create: (_) => UserCubit(),
         ),
+        BlocProvider(
+          create: (_) =>
+              TicketCatalogCubit(TicketsRepository(database: database)),
+        )
       ],
       child: MaterialApp(
         title: 'Trainvel',
