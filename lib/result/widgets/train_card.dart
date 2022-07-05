@@ -23,14 +23,7 @@ class TrainCard extends StatelessWidget {
           },
         );
       },
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            width: 2,
-            color: Colors.grey,
-          ),
-        ),
+      child: Card(
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: Column(
