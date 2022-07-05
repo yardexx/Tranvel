@@ -16,7 +16,7 @@ class TicketCatalogCubit extends Cubit<TicketCatalogState> {
 
   final repository.TicketsRepository _ticketsRepository;
 
-  Future<void> fetchTickets() async {
+  Future<void> fetchAllTickets() async {
     emit(state.copyWith(status: TicketCatalogStatus.loading));
 
     try {
@@ -43,8 +43,21 @@ class TicketCatalogCubit extends Cubit<TicketCatalogState> {
           date: DateTime.now().millisecondsSinceEpoch,
         ),
       );
+      await fetchAllTickets();
     } on Exception {
       emit(state.copyWith(status: TicketCatalogStatus.failure));
+    }
+  }
+
+  Ticket? getCurrentTicket() {
+    try {
+      return state.tickets.firstWhere(
+        (ticket) =>
+            ticket.train.journey.last.arrival.millisecondsSinceEpoch >=
+            DateTime.now().millisecondsSinceEpoch,
+      );
+    } catch (_) {
+      return null;
     }
   }
 }

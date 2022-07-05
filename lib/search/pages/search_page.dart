@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:trainvel/result/pages/pages.dart';
 import 'package:trainvel/result/result.dart';
 
 class SearchPage extends StatefulWidget {

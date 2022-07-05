@@ -12,8 +12,7 @@ class TripHistoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<TicketCatalogCubit>().fetchTickets();
-
+    context.read<TicketCatalogCubit>().fetchAllTickets();
     return BlueCard(
       title: 'Last rides',
       child: Column(
@@ -21,6 +20,7 @@ class TripHistoryCard extends StatelessWidget {
         children: [
           BlocBuilder<TicketCatalogCubit, TicketCatalogState>(
             builder: (context, state) {
+              print(state.status);
               switch (state.status) {
                 case TicketCatalogStatus.initial:
                 case TicketCatalogStatus.loading:
@@ -30,7 +30,7 @@ class TripHistoryCard extends StatelessWidget {
                 case TicketCatalogStatus.success:
                   final trips = state.tickets;
                   if (trips.isEmpty) {
-                    return EmptyHistory();
+                    return const EmptyHistory();
                   }
                   return RideHistory(trips: trips);
                 case TicketCatalogStatus.failure:
@@ -56,30 +56,36 @@ class RideHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: trips.length < 3 ? trips.length : 3,
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(
-            '${trips[index].train.journey.first.name} - '
-            '${trips[index].train.journey.last.name}',
-          ),
-          subtitle: Text(
-            DateFormat('dd.MM.yyyy').format(
-              trips[index].train.journeyDate,
+    return Column(
+      children: [
+        ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: trips.length < 3 ? trips.length : 3,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(
+                '${trips[index].train.category} ${trips[index].train.number}',
+              ),
+              subtitle: Text(
+                DateFormat('dd.MM.yyyy HH:MM').format(
+                  trips[index].train.journeyDate,
+                ),
+              ),
+              trailing: const Icon(Icons.arrow_forward_ios),
+            );
+          },
+          separatorBuilder: (_, __) => const Divider(),
+        ),
+        if (trips.length > 3)
+          SizedBox(
+            width: double.infinity,
+            child: TextButton(
+              onPressed: () => print('Button pressed'),
+              child: Text('Show all rides'),
             ),
           ),
-          trailing: Chip(
-            label: Text(trips[index].train.number.toString()),
-            avatar: CircleAvatar(
-              child: Text(trips[index].train.category),
-            ),
-          ),
-        );
-      },
-      separatorBuilder: (_, __) => const Divider(),
+      ],
     );
   }
 }

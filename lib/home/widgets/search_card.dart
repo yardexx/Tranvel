@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trainvel/search/search.dart';
+import 'package:trainvel/search/pages/pages.dart';
 
 class SearchCard extends StatelessWidget {
   const SearchCard({

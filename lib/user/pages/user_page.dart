@@ -1,24 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trainvel/user/cubit/user_cubit.dart';
 import 'package:trainvel/utils/utils.dart';
 
 class UserPage extends StatelessWidget {
-  UserPage._();
+  const UserPage._();
 
   static Route<String> route() =>
-      MaterialPageRoute(builder: (_) => UserPage._());
-
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _surnameController = TextEditingController();
+      MaterialPageRoute(builder: (_) => const UserPage._());
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final userCubit = context.read<UserCubit>();
-    final user = userCubit.state.user;
-    _nameController.text = user.name;
-    _surnameController.text = user.surname;
 
     return Scaffold(
       appBar: AppBar(
@@ -75,32 +66,6 @@ class UserPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-
-              // TextField(
-              //   controller: _nameController,
-              //   decoration: const InputDecoration(
-              //     labelText: 'First name',
-              //   ),
-              // ),
-              // TextField(
-              //   controller: _surnameController,
-              //   decoration: const InputDecoration(
-              //     labelText: 'Surname',
-              //   ),
-              // ),
-              // const SizedBox(
-              //   height: 32,
-              // ),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     userCubit.createUser(
-              //       _nameController.text,
-              //       _surnameController.text,
-              //     );
-              //     Navigator.pop(context);
-              //   },
-              //   child: const Text('Save'),
-              // ),
             ],
           ),
         ),

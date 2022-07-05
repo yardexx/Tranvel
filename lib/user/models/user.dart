@@ -7,7 +7,6 @@ class User {
   const User({
     required this.name,
     required this.surname,
-    this.isAdmin = false,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -16,7 +15,6 @@ class User {
 
   final String name;
   final String surname;
-  final bool isAdmin;
 
   static const guest = User(
     name: 'Unknown',
@@ -31,7 +29,6 @@ class User {
     return User(
       name: name ?? this.name,
       surname: surname ?? this.surname,
-      isAdmin: isAdmin ?? this.isAdmin,
     );
   }
 }

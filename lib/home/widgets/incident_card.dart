@@ -34,52 +34,6 @@ class _IncidentCardState extends State<IncidentCard> {
           dividerColor: Colors.transparent,
         ),
         child: ExpansionTile(
-          onExpansionChanged: (_) {
-            if (user.isAdmin) {
-              showDialog<void>(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text('Add new incident'),
-                  content: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        TextField(
-                          controller: _nameController,
-                          decoration: const InputDecoration(
-                            labelText: 'Name',
-                          ),
-                        ),
-                        TextField(
-                          controller: _descriptionController,
-                          decoration: const InputDecoration(
-                            labelText: 'Description',
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: const Text('Cancel'),
-                    ),
-                    TextButton(
-                      onPressed: () => setState(() {
-                        incidents.add([
-                          _nameController.text,
-                          _descriptionController.text
-                        ]);
-                        Navigator.pop(context);
-                      }),
-                      child: const Text('Add'),
-                    ),
-                  ],
-                ),
-              );
-            }
-          },
           tilePadding: const EdgeInsets.all(8),
           trailing: Padding(
             padding: const EdgeInsets.only(right: 8),
@@ -93,10 +47,7 @@ class _IncidentCardState extends State<IncidentCard> {
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(left: 8),
-            child: Text(
-              user.isAdmin
-                  ? 'Tap to add new incident'
-                  : 'Current state of train traffic',
+            child: Text('Trains are on time.',
               style: theme.textTheme.subtitle1,
             ),
           ),

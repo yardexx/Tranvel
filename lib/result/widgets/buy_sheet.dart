@@ -20,11 +20,27 @@ class BuySheetWidget extends StatelessWidget {
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const DraggableIndicator(),
+          const Center(child: DraggableIndicator()),
           const SizedBox(
             height: 8,
           ),
+          ListTile(
+            title: Text(
+              '${train.category} ${train.number}',
+              style: theme.textTheme.titleLarge,
+            ),
+            subtitle: Text(
+              '${train.journey.first.name} - ${train.journey.last.name}',
+              style: theme.textTheme.titleMedium,
+            ),
+          ),
+          Text(
+            'Total price:',
+            style: theme.textTheme.labelLarge,
+          ),
+          Text('13.25€', style: theme.textTheme.headlineMedium,),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
@@ -36,9 +52,8 @@ class BuySheetWidget extends StatelessWidget {
                 context.read<TicketCatalogCubit>().saveTicket(train);
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    action: SnackBarAction(label: 'Undo', onPressed: () {}),
-                    content: const Text('Ticket bought'),
+                  const SnackBar(
+                    content: Text('Ticket bought'),
                   ),
                 );
               },

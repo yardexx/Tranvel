@@ -8,8 +8,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:ticket_repository/ticket_repository.dart';
 import 'package:tickets_api/tickets_api.dart';
 import 'package:train_repository/train_repository.dart';
+import 'package:trainvel/home/pages/pages.dart';
 
-import 'package:trainvel/home/home.dart';
 import 'package:trainvel/result/result.dart';
 import 'package:trainvel/ticket_catalog/cubit/ticket_catalog_cubit.dart';
 import 'package:trainvel/user/user.dart';

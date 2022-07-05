@@ -10,7 +10,6 @@ class CurrentTicketPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
     return SlidingUpPanel(
       borderRadius: const BorderRadiusDirectional.vertical(
         top: Radius.circular(16),

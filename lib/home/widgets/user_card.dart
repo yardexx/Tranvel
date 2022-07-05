@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trainvel/user/cubit/user_cubit.dart';
-import 'package:trainvel/user/widgets/widgets.dart';
+import 'package:trainvel/user/pages/pages.dart';
 
 class UserCard extends StatelessWidget {
   const UserCard({

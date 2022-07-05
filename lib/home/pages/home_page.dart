@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:trainvel/home/widgets/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trainvel/ticket_catalog/cubit/ticket_catalog_cubit.dart';
+import 'package:trainvel/ticket_catalog/models/ticket.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Ticket? currentTicket =
+        context.watch<TicketCatalogCubit>().getCurrentTicket();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Trainvel'),
@@ -37,7 +43,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          // const CurrentTicketPanel(),
+          if (currentTicket == null) const CurrentTicketPanel() else Container()
         ],
       ),
     );
