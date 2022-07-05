@@ -15,7 +15,7 @@ class TrainChip extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(32),
-        border: Border.all(color: Colors.grey, width: 2),
+        border: Border.all(width: 2),
       ),
       child: Padding(
         padding: const EdgeInsets.all(4),
